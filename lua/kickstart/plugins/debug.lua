@@ -92,5 +92,16 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+
+    dap.adapters.dart = {
+      type = 'executable',
+      command = 'dart',
+      args = { 'debug_adapter' },
+    }
+    dap.adapters.flutter = {
+      type = 'executable',
+      command = 'flutter',
+      args = { 'debug_adapter' },
+    }
   end,
 }
