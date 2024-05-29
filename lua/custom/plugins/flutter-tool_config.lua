@@ -33,28 +33,6 @@ return {
         -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
         -- see |:help dap.set_exception_breakpoints()| for more info
         exception_breakpoints = {},
-        register_configurations = function(paths)
-          require('dap').configurations.dart = {
-            {
-              type = 'dart',
-              request = 'launch',
-              name = 'Launch dart',
-              -- dartSdkPath = '$HOME/fvm/default/bin/dart', -- ensure this is correct
-              -- flutterSdkPath = '$HOME/fvm/default/bin/flutter', -- ensure this is correct
-              program = '${workspaceFolder}/lib/main.dart', -- ensure this is correct
-              cwd = '${workspaceFolder}',
-            },
-            {
-              type = 'flutter',
-              request = 'launch',
-              name = 'Launch flutter',
-              -- dartSdkPath = '$HOME/fvm/default/bin/dart', -- ensure this is correct
-              -- flutterSdkPath = '$HOME/fvm/default/bin/flutter', -- ensure this is correct
-              program = '${workspaceFolder}/lib/main.dart', -- ensure this is correct
-              cwd = '${workspaceFolder}',
-            },
-          }
-        end,
       },
       root_patterns = { '.git', 'pubspec.yaml' }, -- patterns to find the root of your flutter project
       fvm = true, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled

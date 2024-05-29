@@ -103,5 +103,7 @@ return {
       command = 'flutter',
       args = { 'debug_adapter' },
     }
+
+    dap.configurations.dart = {}
   end,
 }
