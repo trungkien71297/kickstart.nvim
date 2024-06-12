@@ -65,6 +65,9 @@ vim.opt.inccommand = 'split'
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+-- Show which col your cursor is on
+vim.opt.cursorcolumn = true
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
@@ -121,6 +124,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- Run gofmt + goimports on save
+
+local format_sync_grp = vim.api.nvim_create_augroup('goimports', {})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    require('go.format').goimports()
+  end,
+  group = format_sync_grp,
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -447,6 +461,8 @@ require('lazy').setup({
           },
         },
       }
+
+      lspconfig.gopls.setup {}
     end,
   },
 
